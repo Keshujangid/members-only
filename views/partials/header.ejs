@@ -1,0 +1,15 @@
+<header>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <% if (locals.currentUser) { %>
+        <li><a href="/addMessage">Add Message</a></li>
+        <li><a href="/log-out">Log Out</a></li>
+        <li>Welcome, <%= locals.currentUser.username %>!</li>
+      <% } else { %>
+        <li><a href="/sign-up">Sign Up</a></li>
+        <li><a href="/login">Log In</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</header>

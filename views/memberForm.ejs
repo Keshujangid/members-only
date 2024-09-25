@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/form.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<body>
+
+    <%- include('./partials/header') %>
+
+    <h1>Become a Member</h1>
+    <form action="/member" method="POST">
+        <label for="secretkey">secret-key</label>
+        <input id="secretkey" name="secretKey" type="password" />
+        <button type="submit">Submit</button>
+    </form>
+
+    <% if (locals.errors) { %>
+        <section class="error-messages">
+            <h2>Errors:</h2>
+            <ul>
+                <% locals.errors.forEach(function(error) { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        </section>
+    <% } %>
+</body>
+</html>

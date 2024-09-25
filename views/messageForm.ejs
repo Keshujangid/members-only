@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit a Message</title>
+    <link rel="stylesheet" href="/form.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<body>
+  <%- include('./partials/header') %>
+
+  <main class="form-container">
+    <h1>Create a New Message</h1>
+
+    <% if (locals.errors) { %>
+      <h2>Errors:</h2>
+      <ul>
+        <% locals.errors.forEach(function(error) { %>
+          <li class="error"><%= error.msg %></li>
+        <% }); %>
+      </ul>
+    <% } %>
+
+    <form action="/addMessage" method="POST">
+      <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" value="<%= formData ? formData.title : '' %>" required>
+      </div>
+
+      <div>
+        <label for="body">Message:</label>
+        <textarea id="body" name="body" required><%= formData ? formData.body : '' %></textarea>
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </main>
+
+</body>
+</html>

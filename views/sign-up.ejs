@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/header.css"> <!-- Assuming your CSS is stored in /styles/ -->
+    <link rel="stylesheet" href="/form.css">  <!-- Link to form-specific CSS -->
+    <title>Sign Up</title>
+</head>
+
+<body>
+
+    <%- include('./partials/header') %>
+
+
+    <main class="form-container">
+        <h1>Sign Up</h1>
+        <form action="/sign-up" method="POST" class="signup-form">
+            <label for="firstname">First name</label>
+            <input id="firstname" name="firstname" placeholder="First name" type="text" value="<%= formData ? formData.firstname : '' %>" />
+
+            <label for="lastname">Last name</label>
+            <input id="lastname" name="lastname" placeholder="Last name" type="text" value="<%= formData ? formData.lastname : '' %>" />
+
+            <label for="username">Username</label>
+            <input id="username" name="username" placeholder="Username" type="text" value="<%= formData ? formData.username : '' %>" />
+
+            <label for="password">Password</label>
+            <input id="password" name="password" placeholder="Password" type="password" value="<%= formData ? formData.password : '' %>" />
+
+            <label for="confirmpassword">Confirm Password</label>
+            <input id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" type="password" value="<%= formData ? formData.confirmpassword : '' %>" />
+
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+
+        <% if (locals.errors) { %>
+            <section class="error-messages">
+                <h2>Errors:</h2>
+                <ul>
+                    <% locals.errors.forEach(function(error) { %>
+                        <li><%= error.msg %></li>
+                    <% }); %>
+                </ul>
+            </section>
+        <% } %>
+    </main>
+
+</body>
+
+</html>

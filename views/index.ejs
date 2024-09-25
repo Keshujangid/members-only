@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="/app.css">
+  <link rel="stylesheet" href="/header.css">
+</head>
+<body>
+
+  <%- include('./partials/header') %>
+
+  <div class="container">
+    <h1>Welcome to the Members Only Club</h1>
+
+    <% if (locals.currentUser) { %>
+      <h2>Hello, <%= locals.currentUser.username %></h2>
+      <p><%= locals.currentUser.membership_status? 'you are a member'  : 'you are not a member' %></p>
+      <div class="cta-buttons">
+        <a href="/log-out">Log Out</a>
+        <a href="/addMessage">Write a Message</a>
+        <% if (!locals.currentUser.membership_status) { %>
+        <a href="/member">Become member</a>
+          <%  } %>
+      </div>
+    <% } else { %>
+      <h2>Please log in</h2>
+      <div class="cta-buttons">
+        <a href="/login">Log In</a>
+        <a href="/sign-up">Sign Up</a>
+      </div>
+    <% } %>
+
+    <h2>Messages</h2>
+    <div class="messages">
+      <% if (messages.length === 0) { %>
+        <p class="no-messages">No messages yet</p>
+      <% } else { %>
+        <% messages.forEach(message => { %>
+          <div class="message">
+            <% if (locals.currentUser && locals.currentUser.membership_status) { %>
+             
+              <h1><%= message.title %></h1>
+              <p><%= message.body %></p>
+        
+              
+              <% } %>
+
+            <h2> Author: <%= message.username %></h2>
+            <p><%= message.created_at %></p>
+
+            <% if (locals.currentUser && locals.currentUser.admin) { %>
+              <form action="/deleteMessage/<%= message.id %>" method="POST" style="display: inline;">
+                <button type="submit" class="delete-link">Delete</button>
+              </form>
+            <% } %>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/form.css">
+    <link rel="stylesheet" href="/header.css">
+</head>
+<body>
+
+  <%- include('./partials/header') %>
+
+  <% if (messages.length > 0) { %>
+    <% messages.forEach(function (msg) { %>
+      <div class="<%= msg.type %>"><%= msg.message %></div>
+    <% }) %>
+  <% } %>
+
+    <main class="form-container">
+      <h1>Please Log In</h1>
+      <form action="/login" method="POST">
+        <label for="username">Username</label>
+        <input id="username" name="username" placeholder="Username" type="text" />
+        
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" />
+        
+        <button type="submit">Log In</button>
+      </form>
+    </main>
+
+</body>
+</html>

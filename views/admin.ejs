@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="/admin" method="post">
+        <label for="admin">enter admin password</label>
+        <input type="password" name="admin" id="admin">
+        <button type="submit">submit</button>
+    </form>
+    <% if (locals.errors) { %>
+        <section class="error-messages">
+            <h2>Errors:</h2>
+            <ul>
+                <% locals.errors.forEach(function(error) { %>
+                    <li><%= error.msg %></li>
+                <% }); %>
+            </ul>
+        </section>
+    <% } %>
+</body>
+
+</html>

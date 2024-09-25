@@ -1,0 +1,93 @@
+/* General body and typography */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1,
+h2 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+
+
+/* Main content */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h1 {
+    margin-top: 40px;
+}
+
+.container p {
+    text-align: center;
+}
+
+.messages {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.message {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.message h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.message p {
+    margin: 0;
+    font-size: 18px;
+    color: #7f8c8d;
+}
+
+.message:last-child {
+    border-bottom: none;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.cta-buttons a {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.cta-buttons a:hover {
+    background-color: #2980b9;
+}
+
+.no-messages {
+    text-align: center;
+    color: #7f8c8d;
+}
