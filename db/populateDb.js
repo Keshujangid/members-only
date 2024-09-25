@@ -1,7 +1,7 @@
-const { Pool } = require('pg');
+const { Client } = require('pg');
 
 // Create a pool for PostgreSQL connections
-const pool = new Pool({
+const client = new Client({
     connectionString: process.env.DATABASE_URL, 
     ssl: {
         rejectUnauthorized: false
@@ -11,7 +11,7 @@ const pool = new Pool({
 const createTables = async () => {
     try {
         // Connect to the database
-        const client = await pool.connect();
+        await client.connect();
 
         // Create the users table
         await client.query(`
@@ -62,7 +62,7 @@ const createTables = async () => {
     } catch (error) {
         console.error('Error creating tables:', error);
     } finally {
-        pool.end();
+        await client.end();
     }
 };
 
