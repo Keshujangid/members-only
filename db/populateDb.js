@@ -2,15 +2,13 @@ const { Client } = require('pg');
 
 // Create a pool for PostgreSQL connections
 const client = new Client({
-    connectionString: process.env.DATABASE_URL, 
-    ssl: {
-        rejectUnauthorized: false
-    }
+    connectionString: process.env.DATABASE_URL
 });
 
 const createTables = async () => {
     try {
         // Connect to the database
+        console.log('Connecting to the database...');
         await client.connect();
 
         // Create the users table
