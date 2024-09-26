@@ -1,8 +1,15 @@
 const { Client } = require('pg');
 
-// Create a pool for PostgreSQL connections
+const isProduction = process.env.NODE_ENV === 'production';
+
+// Create a client for PostgreSQL connections
 const client = new Client({
-    connectionString: process.env.DATABASE_URL
+    connectionString: isProduction
+        ? process.env.DATABASE_URL // Use the DATABASE_URL for production
+        : `postgresql://${process.env.DB_USER}:${process.env.DB_PASSWORD}@localhost:5432/${process.env.DB_NAME}`, // Use local DB for development
+    ssl: isProduction
+        ? { rejectUnauthorized: false }
+        : false
 });
 
 const createTables = async () => {
@@ -56,11 +63,10 @@ const createTables = async () => {
         `);
 
         console.log('Tables created successfully!');
-        client.release();
     } catch (error) {
         console.error('Error creating tables:', error);
     } finally {
-        await client.end();
+        await client.end(); // Only call client.end() here
     }
 };
 

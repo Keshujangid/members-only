@@ -9,7 +9,7 @@ router.get("/", controller.home);
 router.get("/sign-up", controller.getSignUp);
 router.post("/sign-up", formValidator.validateSignUp, controller.postSignUp);
 router.get("/login", controller.getLogin);
-router.post('/login', formValidator.validateLogin, authController);
+router.post("/login", formValidator.validateLogin, authController);
 router.get("/log-out", (req, res, next) => {
     req.logout((err) => {
         if (err) {

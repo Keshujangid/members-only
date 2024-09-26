@@ -71,7 +71,7 @@ const messageValidators = [
   }
 ]
 
-validateLogin = [
+const validateLogin = [
   check('username').trim().notEmpty().withMessage('Username is required').escape(),
   check('password').trim().notEmpty().withMessage('Password is required').escape(),
   (req, res, next) => {
@@ -87,7 +87,7 @@ validateLogin = [
   }
 ]
 
-validateMemberForm = [
+const validateMemberForm = [
   check('secretKey').trim().notEmpty().withMessage('Secret key is required').escape(),
   (req, res, next) => {
     const errors = validationResult(req);
@@ -99,7 +99,7 @@ validateMemberForm = [
   }
 ]
 
-validateAdmin = [
+const validateAdmin = [
   check('admin').trim().notEmpty().withMessage('Password is required').escape(),
   (req, res, next) => {
     const errors = validationResult(req);
