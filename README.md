@@ -11,7 +11,7 @@ Welcome to **Members Only Club**, an exclusive clubhouse where registered member
 
 ## Demo
 
-You can access the live version of the application [here](https://your-project-name.vercel.app).
+You can access the live version of the application [here](https://members-only-seven.vercel.app/).
 
 ## Tech Stack
 
